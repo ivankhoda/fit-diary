@@ -9,6 +9,9 @@
 /config/secrets.yml
 coverage
 vendor
+.idea
+/.idea
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
