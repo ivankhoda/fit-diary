@@ -18,7 +18,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: ivankhoda/menu:latest
+      image: ivankhoda/diary:latest
       credentials:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
@@ -28,7 +28,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_USER: root
-          POSTGRES_DB: menu
+          POSTGRES_DB: diary
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_HOST: db
         ports:
@@ -45,7 +45,7 @@ jobs:
       - name: Create DB
         env:
           POSTGRES_USER: root
-          POSTGRES_DB: menu
+          POSTGRES_DB: diary
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_HOST: db
           RAILS_ENV: test

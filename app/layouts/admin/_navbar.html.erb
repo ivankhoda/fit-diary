@@ -1,0 +1,411 @@
+<h1>Navbar</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+        <% if has_access_to?(:bets, :manage) && current_admin.roles?(:moderator, :moderator_trainee) %>
+          <li><%= link_to t('admin.menu.new_bet'), new_admin_bet_path, class: 'dropdown-toggle' %></li>
+          <li><%= link_to t('admin.menu.bets'), admin_bets_path, class: 'dropdown-toggle' %></li>
+        <% end %>
+        <% if has_access_to?(:oddin_lines, :view) %>
+          <li><%= link_to t('admin.oddin'), admin_oddin_lines_path, class: 'dropdown-toggle' %></li>
+        <% end %>
+        <% if has_access_to?(:egb_users, :view, :view3) %>
+          <li><%= link_to t('admin.menu.egb_users'), admin_egb_users_path, class: 'dropdown-toggle' %></li>
+        <% end %>
+        <% if has_access_to?(:download_documents) && current_admin.roles?(:security) %>
+          <li><%= link_to t('admin.menu.verification'), admin_download_documents_path, class: 'dropdown-toggle' %></li>
+        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= t('admin.menu.bets') %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if has_access_to?(:bets) %>
+              <li><%= link_to t('admin.menu.egaming_bets'), admin_bets_path %></li>
+            <% end %>
+            <% if has_access_to?(:bets, :manage) %>
+              <li class="text-right small"><%= link_to t('admin.menu.new_bet'), new_admin_bet_path %></li>
+            <% end %>
+            <% if has_access_to?(:bets) %>
+              <li><%= link_to t('admin.menu.live_bets'), live_bets_admin_bets_path %></li>
+            <% end %>
+            <% if has_access_to?(:bets, :manage) %>
+              <li class="text-right small"><%= link_to t('admin.menu.new_live_bet'), new_admin_bet_path(live: true) %></li>
+            <% end %>
+            <% if has_access_to?(:bets) %>
+              <li><%= link_to t('admin.menu.sport_bets'), sport_bets_admin_bets_path %></li>
+              <li><%= link_to t('admin.menu.sport_live_bets'), sport_bets_live_bets_admin_bets_path %></li>
+              <li><%= link_to t('admin.cancelled_bets_log'), cancelled_bets_log_admin_bets_path %></li>
+            <% end %>
+            <% if has_access_to?(:user_bets) %>
+              <li><%= link_to t('admin.bets_log'), bets_log_admin_bets_path %></li>
+            <% end %>
+            <% if has_access_to?(:incubator_shifts) %>
+              <li><%= link_to t('admin.shifts_log'), admin_incubator_shifts_path %></li>
+            <% end %>
+            <% if has_access_to?(:incubator2_bets) %>
+              <li><%= link_to t('admin.incubator_2_bets_log'), admin_incubator2_suggestions_path %></li>
+              <li><%= link_to t('admin.incubator_2_user_bets_log'), admin_incubator2_user_bets_path %></li>
+            <% end %>
+            <% if has_access_to?(:user_bets) %>
+              <li><%= link_to t('admin.bets_play_money_log'), play_money_log_admin_bets_path %></li>
+              <li><%= link_to t('admin.artifact_bet_log'), artifact_bet_log_admin_bets_path %></li>
+              <li><%= link_to t('admin.expresses_log'), expresses_log_admin_bets_path %></li>
+            <% end %>
+
+            <% if has_access_to?(:streams, :trainee, :manage, :view) %>
+              <li><%= link_to t('admin.menu.streams'), admin_streams_path %></li>
+            <% end %>
+            <% if has_access_to?(:tournaments) %>
+              <li><%= link_to t('admin.menu.tournaments'), admin_tournaments_path %></li>
+            <% end %>
+            <% if has_access_to?(:players) %>
+              <li><%= link_to t('admin.menu.players'), admin_teams_path %></li>
+            <% end %>
+            <% if has_access_to?(:gifts) %>
+              <li><%= link_to t('admin.menu.gifts'), admin_gifts_path %></li>
+            <% end %>
+            <% if has_access_to?(:promo_actions) %>
+              <li><%= link_to t('admin.menu.promo_actions'), admin_promo_actions_path %></li>
+            <% end %>
+            <% if has_access_to?(:landing_pages) %>
+              <li class="text-right small"><%= link_to t('admin.landing_pages'), admin_landing_pages_path %></li>
+            <% end %>
+            <% if has_access_to?(:chat) %>
+              <li><%= link_to t('admin.menu.chat'), admin_chat_index_path %></li>
+              <li><%= link_to "#{t('admin.menu.chat')} (#{t('incubator')})", incubator_admin_chat_index_path %></li>
+            <% end %>
+            <% if has_access_to?(:nested_bets_names) %>
+              <li><%= link_to t('admin.menu.nested_bets_names'), admin_nested_bets_names_path %></li>
+            <% end %>
+            <% if has_access_to?(:nested_bets_types) %>
+              <li><%= link_to t('admin.menu.nested_bets_types'), admin_nested_bets_types_path %></li>
+            <% end %>
+            <% if has_access_to?(:handicaps_types) %>
+              <li><%= link_to t('admin.handicaps_types'), admin_handicaps_types_path %></li>
+            <% end %>
+            <% if has_access_to?(:incubator_lines_types) %>
+              <li><%= link_to t('admin.incubator_lines_types'), admin_incubator_lines_types_path %></li>
+            <% end %>
+            <% if has_access_to?(:patterns) %>
+              <li><%= link_to t('admin.patterns'), admin_patterns_path %></li>
+            <% end %>
+          </ul>
+        </li>
+
+        <% if current_admin.roles?(:finance, :marketing, :moderator, :senior_moderator, :developer) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin.menu.casino') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if has_access_to?(:casino_provider) || has_access_to?(:casino_games) %>
+                <li><%= link_to t('admin.menu.providers_management'), admin_casino_providers_path %></li>
+              <% end %>
+              <% if has_access_to?(:casino_provider, :manage, :view) %>
+                <li class="text-right small"><%= link_to t('admin.menu.providers'), admin_casino_providers_path %></li>
+              <% end %>
+              <% if has_access_to?(:casino_games, :manage, :view) %>
+                <li class="text-right small"><%= link_to t('admin.menu.games'), admin_casino_games_path %></li>
+              <% end %>
+              <% if has_access_to?(:casino_filters, :manage) %>
+                <li><%= link_to t('admin.custom_game_filters'), admin_casino_filter_groups_path %></li>
+              <% end %>
+              <% if has_access_to?(:casino_logs, :manage) %>
+                <li><%= link_to t('admin.menu.log_casino'), admin_casino_logs_path %></li>
+              <% end %>
+              <% if has_access_to?(:casino_error_logs, :view) %>
+                <li><%= link_to t('admin.menu.casino_error_logs'), admin_casino_error_logs_path %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= t('admin.menu.egb_users') %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if has_access_to?(:egb_users, :view, :view3) %>
+              <li><%= link_to t('admin.menu.egb_users'), admin_egb_users_path %></li>
+            <% end %>
+            <% if has_access_to?(:chat_ban) %>
+              <li><%= link_to t('admin.menu.chat_bans'), admin_chat_ban_index_path %></li>
+            <% end %>
+            <% if has_access_to?(:deposits) %>
+              <li><%= link_to t('admin.menu.deposits'), admin_deposits_path %></li>
+            <% end %>
+            <% if has_access_to?(:p2p_pending_deposits) %>
+              <li><%= link_to t('admin.menu.pending_deposits'), pending_admin_deposits_path %></li>
+            <% end %>
+            <% if has_access_to?(:deposits_invoices, :view) %>
+              <li><%= link_to t('admin.failed_transactions'), admin_invoices_path %></li>
+            <% end %>
+            <% if has_access_to?(:cashouts) %>
+              <li><%= link_to t('admin.menu.cashouts'), admin_cashouts_path %></li>
+            <% end %>
+            <% if has_access_to?(:shop_items) %>
+              <li><%= link_to t('admin.menu.shop'), admin_shop_items_path %></li>
+            <% end %>
+            <% if has_access_to?(:gift_cards) %>
+              <li><%= link_to t('admin.menu.gift_cards'), admin_gift_cards_path %></li>
+            <% end %>
+            <% if has_access_to?(:promo_codes) %>
+              <li><%= link_to t('admin.menu.promo_codes'), admin_promo_codes_path %></li>
+            <% end %>
+            <% if has_access_to?(:statistics) %>
+              <li><%= link_to t('admin.menu.statistics'), admin_statistics_path %></li>
+            <% end %>
+            <% if has_access_to?(:marketing) %>
+              <li><%= link_to t('admin.menu.marketing'), admin_marketing_index_path %></li>
+            <% end %>
+            <% if has_access_to?(:black_lists) %>
+              <li><%= link_to t('admin.menu.black_list'), admin_black_lists_path %></li>
+            <% end %>
+
+            <% if has_access_to?(:trade_links) %>
+              <li><%= link_to t('admin.menu.trade_links'), admin_trade_links_path %></li>
+            <% end %>
+            <% if has_access_to?(:referrals) %>
+              <li>
+                <%= link_to t('admin.referrals'), admin_referrals_path %>
+              </li>
+            <% end %>
+            <% if has_access_to?(:labels, :manage) %>
+              <li>
+                <%= link_to t('admin.labels'), admin_labels_path %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+
+        <% if has_access_to?(:lootboxes) || has_access_to?(:lootbox_recipes) || has_access_to?(:lootbox_orders) ||
+          has_access_to?(:lootbox_logs) || has_access_to?(:artifacts) || has_access_to?(:artifact_recipes) ||
+          has_access_to?(:artifact_orders) || has_access_to?(:artifact_logs) || has_access_to?(:scrolls) ||
+          has_access_to?(:scrolls_recipes) || has_access_to?(:scrolls_orders) || has_access_to?(:scrolls_artifacts) ||
+          has_access_to?(:scrolls_logs) || has_access_to?(:giveaways) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin.menu.egb_item') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if has_access_to?(:lootboxes) %>
+                <li><%= link_to t('admin.lootboxes'), admin_lootboxes_path %></li>
+              <% end %>
+              <% if has_access_to?(:lootbox_recipes) %>
+                <li class="text-right small"><%= link_to t('admin.lootbox_recipes'), admin_lootbox_recipes_path %></li>
+              <% end %>
+              <% if has_access_to?(:lootbox_orders) %>
+                <li class="text-right small"><%= link_to t('admin.lootbox_orders'), admin_lootbox_orders_path %></li>
+              <% end %>
+              <% if has_access_to?(:lootbox_logs) %>
+                <li class="text-right small"><%= link_to t('admin.lootbox_logs'), admin_lootbox_logs_path %></li>
+              <% end %>
+              <% if has_access_to?(:artifacts) %>
+                <li><%= link_to t('admin.artifacts'), admin_artifacts_path %></li>
+              <% end %>
+              <% if has_access_to?(:artifact_recipes) %>
+                <li class="text-right small"><%= link_to t('admin.artifact_recipes'), admin_artifact_recipes_path %></li>
+              <% end %>
+              <% if has_access_to?(:artifact_orders) %>
+                <li class="text-right small"><%= link_to t('admin.artifact_orders'), admin_artifact_orders_path %></li>
+              <% end %>
+              <% if has_access_to?(:artifact_logs) %>
+                <li class="text-right small"><%= link_to t('admin.artifact_logs'), admin_artifact_logs_path %></li>
+              <% end %>
+              <% if has_access_to?(:scrolls) %>
+                <li><%= link_to Inventory::Items::Scroll.model_name.human, admin_scrolls_path %></li>
+              <% end %>
+              <% if has_access_to?(:scrolls_recipes) %>
+                <li class="text-right small"> <%= link_to t('admin.scrolls_recipes'), admin_scrolls_recipes_path %></li>
+              <% end %>
+              <% if has_access_to?(:scrolls_orders) %>
+                <li class="text-right small"><%= link_to t('admin.scrolls_orders'), admin_scrolls_orders_path %></li>
+              <% end %>
+              <% if has_access_to?(:scrolls_artifacts) %>
+                <li class="text-right small">
+                  <%= link_to Inventory::Items::Scrolls::Artifact.model_name.human, admin_scrolls_artifacts_path %>
+                </li>
+              <% end %>
+              <% if has_access_to?(:scrolls_logs) %>
+                <li class="text-right small"><%= link_to t('admin.scrolls_logs'), admin_scrolls_logs_path %></li>
+              <% end %>
+              <% if has_access_to?(:giveaways) %>
+                <li>
+                  <%= link_to t('admin.giveaways'), admin_giveaways_path %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <% if has_access_to?(:steam_trades) || has_access_to?(:steam_skins) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin.menu.steam_skins') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if has_access_to?(:steam_trades) %>
+                <li>
+                  <%= link_to t('activerecord.models.steam_trade'), admin_steam_trades_path %>
+                </li>
+              <% end %>
+              <% if has_access_to?(:steam_skins) %>
+                <li>
+                  <%= link_to t('activerecord.models.steam_skin'), admin_steam_skins_path %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <% if has_access_to?(:faqs) || has_access_to?(:news) || has_access_to?(:stories) || has_access_to?(:static_pages) ||
+          has_access_to?(:hidden_temples) || has_access_to?(:browser_notifications) || has_access_to?(:surveys) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin.menu.content') %>
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% if has_access_to?(:faqs) %>
+                <li><%= link_to t('admin.menu.faq'), admin_faqs_path %></li>
+              <% end %>
+              <% if has_access_to?(:news) %>
+                <li><%= link_to t('admin.menu.news'), admin_news_index_path %></li>
+                <li><%= link_to t('admin.menu.promo_news'), admin_promo_news_index_path %></li>
+              <% end %>
+              <% if has_access_to?(:stories) %>
+                <li><%= link_to t('admin.menu.stories'), admin_stories_path %></li>
+              <% end %>
+              <% if has_access_to?(:static_pages) %>
+                <li><%= link_to t('admin.menu.static_pages'), admin_static_pages_path %></li>
+              <% end %>
+              <% if has_access_to?(:hidden_temples) %>
+                <li><%= link_to t('admin.menu.hidden_temples'), admin_hidden_temples_path %></li>
+              <% end %>
+              <% if has_access_to?(:browser_notifications) %>
+                <li><%= link_to t('admin.notification'), admin_browser_notifications_path %></li>
+              <% end %>
+              <% if has_access_to?(:surveys) %>
+                <li><%= link_to t('admin.menu.surveys'), admin_surveys_path %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= t('admin.menu.settings') %>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% if has_access_to?(:site_setting) %>
+              <li><%= link_to t('admin.menu.settings'), admin_site_setting_index_path %></li>
+            <% end %>
+            <% if has_access_to?(:deposit_cashout_countries) %>
+              <li><%= link_to t('admin.menu.payments_by_countries'), admin_deposit_cashout_countries_path %></li>
+            <% end %>
+            <% if has_access_to?(:payment_systems) %>
+              <li><%= link_to t('admin.payment_systems_header'), admin_payment_systems_path %></li>
+            <% end %>
+            <% if has_access_to?(:banks) %>
+              <li><%= link_to t('admin.bank_bins_header'), admin_banks_path %></li>
+            <% end %>
+            <% if has_access_to?(:cashout_reasons, :manage) %>
+              <li><%= link_to t('admin.cashout_reasons'), admin_reasons_cashout_reasons_path %></li>
+            <% end %>
+            <% if has_access_to?(:line_reasons) %>
+              <li><%= link_to t('admin.line_reasons'), admin_reasons_line_reasons_path %></li>
+            <% end %>
+            <% if has_access_to?(:games) %>
+              <li><%= link_to t('admin.menu.games'), admin_table_filters_path %></li>
+            <% end %>
+            <% if has_access_to?(:bonuses) %>
+              <li><%= link_to t('admin.menu.bonuses'), admin_bonuses_path %></li>
+            <% end %>
+            <% if has_access_to?(:group_exceptions) %>
+              <li><%= link_to t('admin.menu.group_exceptions'), admin_group_exceptions_path %></li>
+            <% end %>
+            <% if (Rails.env.development? || Rails.env.staging?) && has_access_to?(:mailers) %>
+              <li><%= link_to t('admin.menu.mailers'), '/rails/mailers' %></li>
+            <% end %>
+            <% if has_access_to?(:smiles) %>
+              <li><%= link_to t('admin.smiles'), admin_smiles_path %></li>
+            <% end %>
+            <% if has_access_to?(:admins) %>
+              <li><%= link_to t('admin.menu.admins'), admin_admins_path %></li>
+            <% end %>
+            <% if has_access_to?(:gamer_stats) %>
+              <li><%= link_to t('admin.menu.statistics'), admin_gamer_stats_path %></li>
+            <% end %>
+            <% if has_access_to?(:mobile_app_version) %>
+              <li><%= link_to t('admin.menu.mobile_versions'), admin_mobile_app_versions_path %></li>
+            <% end %>
+            <% if has_access_to?(:flags) %>
+              <li><%= link_to t('admin.flags'), admin_flags_path %></li>
+            <% end %>
+            <% if has_access_to?(:partners) %>
+              <li><%= link_to t('admin.menu.partners'), admin_partners_path %></li>
+            <% end %>
+            <% if has_access_to?(:site_domain) %>
+              <li><%= link_to t('admin.menu.site_domains'), admin_site_domains_path %></li>
+            <% end %>
+            <% if has_access_to?(:bounced_users) %>
+              <li><%= link_to t('admin.menu.upload_bounced_users'), new_admin_bounced_user_path %></li>
+            <% end %>
+            <% if current_admin.roles?(:moderator, :senior_moderator) %>
+              <li><%= link_to t('admin.line_сonfig'), admin_coef_changers_path %></li>
+              <li><%= link_to t('admin.live_line_config'), admin_coef_changers_path('live') %></li>
+            <% end %>
+            <% if current_admin.roles?(:finance) %>
+              <li><%= link_to t('admin.currencies'), admin_manual_currency_rates_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% if current_admin.roles?(:seo, :viewer, :content_manager) %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin.menu.seo') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if has_access_to?(:meta_tags) %>
+                <li><%= link_to t('admin.menu.meta_tags'), admin_meta_tags_path %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="navbar-right-buttons">
+        <%= branch_name %>
+        <div class="navbar-text navbar-admin-buttons">
+          <%= link_to current_admin.login, admin_profiles_path, class: 'navbar-link' %>
+          <%= link_to destroy_admin_session_path, class: 'button-admin-logout', data: {confirm: t('admin.sure_logout')} do %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="svg-default svg-logout-icon"><path fill-rule="evenodd" d="M10 12.5a.5.5 0 01-.5.5h-8a.5.5 0 01-.5-.5v-9a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v2a.5.5 0 001 0v-2A1.5 1.5 0 009.5 2h-8A1.5 1.5 0 000 3.5v9A1.5 1.5 0 001.5 14h8a1.5 1.5 0 001.5-1.5v-2a.5.5 0 00-1 0v2z"/><path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 000-.708l-3-3a.5.5 0 00-.708.708L14.293 7.5H5.5a.5.5 0 000 1h8.793l-2.147 2.146a.5.5 0 00.708.708l3-3z"/></svg>
+          <% end %>
+          <button id="night-mode-button" type="button" class="button-admin-nightmode">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="svg-default svg-nightmode-icon"><path d="M12 8a4 4 0 11-8 0 4 4 0 018 0zM8 0a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 0zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 13zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM3 8a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2A.5.5 0 013 8zm10.657-5.657a.5.5 0 010 .707l-1.414 1.415a.5.5 0 11-.707-.708l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L3.05 13.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM4.464 4.465a.5.5 0 01-.707 0L2.343 3.05a.5.5 0 11.707-.707l1.414 1.414a.5.5 0 010 .708z"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

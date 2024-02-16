@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="ModuleRunConfigurationManager">
+    <shared />
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../.bundle/ruby/3.2.0/gems/builder-3.2.4" />
+    <orderEntry type="jdk" jdkName="Remote: ruby-3.2.2 (-p53 (3)" jdkType="RUBY_SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.20.0, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.0.8, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+  </component>
+  <component name="RakeTasksCache">
+    <option name="myRootTask">
+      <RakeTaskImpl id="rake">
+        <subtasks>
+          <RakeTaskImpl id="blankslate">
+            <subtasks>
+              <RakeTaskImpl description="Remove package products" fullCommand="blankslate:clobber_package" id="clobber_package" />
+              <RakeTaskImpl description="Build the gem file blankslate-3.2.4.gem" fullCommand="blankslate:gem" id="gem" />
+              <RakeTaskImpl description="Build all the packages" fullCommand="blankslate:package" id="package" />
+              <RakeTaskImpl description="Force a rebuild of the package files" fullCommand="blankslate:repackage" id="repackage" />
+              <RakeTaskImpl description="" fullCommand="blankslate:clobber" id="clobber" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="builder">
+            <subtasks>
+              <RakeTaskImpl description="Remove package products" fullCommand="builder:clobber_package" id="clobber_package" />
+              <RakeTaskImpl description="Build the gem file builder-3.2.4.gem" fullCommand="builder:gem" id="gem" />
+              <RakeTaskImpl description="Build all the packages" fullCommand="builder:package" id="package" />
+              <RakeTaskImpl description="Force a rebuild of the package files" fullCommand="builder:repackage" id="repackage" />
+              <RakeTaskImpl description="" fullCommand="builder:clobber" id="clobber" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
+          <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
+          <RakeTaskImpl description="Remove RDoc HTML files" fullCommand="clobber_rdoc" id="clobber_rdoc" />
+          <RakeTaskImpl description="Default Task" fullCommand="default" id="default" />
+          <RakeTaskImpl description="Install the jamis RDoc template" fullCommand="install_jamis_template" id="install_jamis_template" />
+          <RakeTaskImpl description="Build RDoc HTML files" fullCommand="rdoc" id="rdoc" />
+          <RakeTaskImpl description="Rebuild RDoc HTML files" fullCommand="rerdoc" id="rerdoc" />
+          <RakeTaskImpl description="Generate the TAGS file" fullCommand="tags[all]" id="tags[all]" />
+          <RakeTaskImpl id="tags">
+            <subtasks>
+              <RakeTaskImpl description="Generate an Emacs TAGS file" fullCommand="tags:emacs[all]" id="emacs[all]" />
+              <RakeTaskImpl description="" fullCommand="tags:emacs" id="emacs" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Run tests" fullCommand="test" id="test" />
+          <RakeTaskImpl description="Run all tests" fullCommand="test_all" id="test_all" />
+          <RakeTaskImpl description="Run tests for test_units" fullCommand="test_units" id="test_units" />
+          <RakeTaskImpl description="" fullCommand="html" id="html" />
+          <RakeTaskImpl description="" fullCommand="html/created.rid" id="html/created.rid" />
+          <RakeTaskImpl description="" fullCommand="file" id="file" />
+          <RakeTaskImpl description="" fullCommand="package" id="package" />
+          <RakeTaskImpl description="" fullCommand="pkg" id="pkg" />
+          <RakeTaskImpl description="" fullCommand="pkg/blankslate-3.2.4" id="pkg/blankslate-3.2.4" />
+          <RakeTaskImpl description="" fullCommand="pkg/blankslate-3.2.4.gem" id="pkg/blankslate-3.2.4.gem" />
+          <RakeTaskImpl description="" fullCommand="pkg/builder-3.2.4" id="pkg/builder-3.2.4" />
+          <RakeTaskImpl description="" fullCommand="lib/publish.rake" id="lib/publish.rake" />
+          <RakeTaskImpl description="" fullCommand="lib/tags.rake" id="lib/tags.rake" />
+          <RakeTaskImpl description="" fullCommand="lib/testing.rake" id="lib/testing.rake" />
+          <RakeTaskImpl description="" fullCommand="pkg/builder-3.2.4.gem" id="pkg/builder-3.2.4.gem" />
+          <RakeTaskImpl description="" fullCommand="remove_tags" id="remove_tags" />
+          <RakeTaskImpl description="" fullCommand="ta" id="ta" />
+          <RakeTaskImpl description="" fullCommand="tags" id="tags" />
+          <RakeTaskImpl description="" fullCommand="tu" id="tu" />
+        </subtasks>
+      </RakeTaskImpl>
+    </option>
+  </component>
+  <component name="RubyModuleProperties">
+    <option name="autoCreated" value="true" />
+  </component>
+</module>

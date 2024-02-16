@@ -2,7 +2,7 @@ test:
   adapter: postgresql
   host: db
   encoding: unicode
-  database: menu_test
+  database: diary_test
   pool: 20
   username: <%= ENV["POSTGRES_USER"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>

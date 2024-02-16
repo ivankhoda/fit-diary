@@ -4,51 +4,44 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+        - "3000:3000"
     volumes:
-      - .:/usr/src/app
-      - gem_cache:/gems
+        - .:/usr/src/app
+        - gem_cache:/gems
     env_file:
-      - .env/development/database
-      - .env/development/web
+        - .env/development/database
+        - .env/development/web
+        - .env/development/telegram
+    depends_on:
+      - database
+      - redis
     networks:
-      - menu
-  nginx:
-    build: .
-    image: nginx:alpine
-    ports:
-      - "81:80"
-      - "82:81"
-      - "444:443"
-      - "445:444"
-    volumes:
-        - ./docker/nginx/menu_dev.conf:/etc/nginx/conf.d/menu_dev.conf
-        - ./config/server.crt:/etc/nginx/ssl/certs/server.crt
-        - ./config/server.key:/etc/nginx/ssl/certs/server.key
-    networks:
-      - menu
-
+        - fit
 
   redis:
     image: redis
+    ports:
+        - "6379:6379"
     networks:
-      - menu
+        - fit
 
   database:
     image: postgres
+    ports:
+      - "6543:5432"
     env_file:
-      - .env/development/database
-      - .env/development/web
+        - .env/development/database
+        - .env/development/web
     volumes:
-      - db_data:/var/lib/postgresql/data
+        - db_data:/var/lib/postgresql/data
     networks:
-      - menu
+        - fit
 
 volumes:
   db_data:
   gem_cache:
 
 networks:
-  menu:
+  fit:
     driver: overlay
     attachable: true

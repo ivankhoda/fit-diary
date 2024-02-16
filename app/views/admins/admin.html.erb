@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%#= stylesheet_link_tag 'admin', media: "all" %>
+  <%= yield :css %>
+  <% pp(current_admin, '88888') %>
+  <% if admin_signed_in? %>
+
+<!--    <script type="text/javascript">-->
+<!--        window.PARAMS = {-->
+<!--            I18n: {-->
+<!--                defaultLocale: "<%= I18n.default_locale %>",-->
+<!--                locale: "<%#= I18n.locale %>"-->
+<!--            }-->
+<!--        };-->
+<!--    </script>-->
+
+
+  <% end %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+
+<% if admin_signed_in? %>
+  <div>Hi there</div>
+  <%#= render 'layouts/admin/navbar' %>
+<% end %>
+
+</html>

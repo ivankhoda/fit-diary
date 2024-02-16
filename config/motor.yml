@@ -1,0 +1,58 @@
+---
+engine_version: 0.4.23
+file_version: 2023-12-19 18:23:23.738328000 Z
+resources:
+- name: user_exercise_set
+  preferences:
+    associations:
+    - name: user_workout
+      display_name: UserWorkout
+      model_name: user_workout
+      foreign_key: workout_id
+      primary_key: id
+      virtual: true
+      polymorphic: false
+      slug: user_workout
+  updated_at: 2023-12-19 18:23:23.738328000 +00:00
+- name: workout
+  preferences: {}
+  updated_at: 2023-12-18 17:55:04.779948000 +00:00
+- name: workout_exercise
+  preferences:
+    columns:
+    - reference:
+        name: exercise
+        display_name: Exercise
+        model_name: exercise
+        reference_type: belongs_to
+        foreign_key: exercise_id
+        primary_key: id
+        options: {}
+        polymorphic:
+        virtual: false
+      name: exercise_id
+  updated_at: 2023-12-08 12:56:42.054214000 +00:00
+configs:
+- key: header.links
+  value:
+  - name: Reports
+    link_type: reports
+  - name: Forms
+    link_type: forms
+  updated_at: 2023-12-08 14:55:14.870607000 +00:00
+- key: homepage.layout
+  value:
+  - type: dashboard
+    id: ''
+  updated_at: 2023-12-08 14:55:30.385391000 +00:00
+queries: []
+dashboards: []
+forms: []
+alerts: []
+api_configs:
+- id: 1
+  name: origin
+  url: "/"
+  preferences: {}
+  description:
+  updated_at: 2023-12-08 10:47:31.855783000 +00:00

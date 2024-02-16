@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="ModuleRunConfigurationManager">
+    <shared />
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../.bundle/ruby/3.2.0/gems/timeout-0.4.0" />
+    <orderEntry type="jdk" jdkName="Remote: ruby-3.2.2 (-p53 (3)" jdkType="RUBY_SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.10, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="power_assert (v2.0.3, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="test-unit (v3.5.7, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
+  </component>
+  <component name="RubyModuleProperties">
+    <option name="autoCreated" value="true" />
+  </component>
+</module>

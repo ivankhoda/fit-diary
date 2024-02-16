@@ -36,3 +36,4 @@ vendor
 /config/server.key
 /server.pass.key
 /server.csr
+/.env/development/telegram

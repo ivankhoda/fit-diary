@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: ivankhoda/menu:prod
+    image: ivankhoda/diary:prod
     ports:
       - "3000:3000"
     env_file:
@@ -10,26 +10,14 @@ services:
       - .env/production/web
       - .env/production/telegram
     networks:
-      - menu
+      - diary
 
-  nginx:
-        image: ivankhoda/nginx:prod
-        ports:
-          - "81:80"
-          - "82:81"
-    #      - "444:443"
-    #      - "445:444"
-    #    volumes:
-    #        - ./nginx/conf/:/etc/nginx/conf.d/:ro
-    #        - ./certbot/www/:/var/www/certbot/:ro
-    #        - ./docker/nginx/menu.conf:/etc/nginx/conf.d/menu.conf
-    #        - ./docker/nginx/app.conf:/etc/nginx/conf.d/app.conf
-        networks:
-          - menu
   redis:
     image: redis
+    ports:
+      - "6379:6379"
     networks:
-      - menu
+      - diary
 
   database:
     image: postgres:16-alpine
@@ -39,10 +27,10 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - menu
+      - diary
 
   db-creator:
-      image: ivankhoda/menu:prod
+      image: ivankhoda/diary:prod
       command: [ "bin/rails", "db:create" ]
       env_file:
         - .env/production/database
@@ -51,10 +39,10 @@ services:
         restart_policy:
           condition: none
       networks:
-        - menu
+        - diary
 
   db-migrator:
-      image: ivankhoda/menu:prod
+      image: ivankhoda/diary:prod
       command: [ "bin/rails", "db:migrate" ]
       env_file:
         - .env/production/database
@@ -65,13 +53,13 @@ services:
       depends_on:
         - db-creator
       networks:
-        - menu
+        - diary
 
 volumes:
   db_data:
 
 #Docker Networks
 networks:
-  menu:
+  diary:
     driver: overlay
     attachable: true

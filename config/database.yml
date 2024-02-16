@@ -10,7 +10,7 @@ default: &default
   host: <%= ENV.fetch('DATABASE_HOST') || "127.0.0.1" %>
   username: <%= ENV.fetch('POSTGRES_USER') || postgres %>
   password: <%= ENV.fetch('POSTGRES_PASSWORD') || postgres %>
-  database: <%= ENV.fetch('POSTGRES_DB') || menu_development %>
+  database: <%= ENV.fetch('POSTGRES_DB') || diary_development %>
   pool: 5
   variables:
     statement_timeout: 5000
@@ -19,8 +19,8 @@ development:
   <<: *default
 test:
   <<: *default
-  database: menu_test
+  database: diary_test
 
 production:
   <<: *default
-  database: menu_production
+  database: diary_production

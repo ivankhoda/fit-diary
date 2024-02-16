@@ -1,6 +1,6 @@
 require 'active_support/core_ext/integer/time'
 require 'yaml'
-
+Telegram.bots_config = { default: ENV.fetch('TELEGRAM') } unless Rails.application.secrets.telegram.present?
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -70,15 +70,17 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << /[a-z0-9-]+\.ngrok-free\.app/
-  # config.telegram_updates_controller.session_store = :redis_store, { expires_in: 1.month }
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: :any
+    end
+  end
+
+  config.telegram_updates_controller.session_store = :redis_store, { expires_in: 1.hour,
+                                                                     key: '_application_session',
+                                                                     server: 'redis://redis:6379/' }
+
   routes.default_url_options = { host: ENV['test_url'], protocol: 'https' }
   config.web_console.permissions = '91.108.6.80'
-  # tg_conf = YAML.load_file('config/secrets.dev.yml')
-  # Telegram.bots_config = {
-  #   default: '5397508359:AAE7IUaDiAAu5MHOVV6JR4_4R-rgbQE__Q0',
-  #   chat: {
-  #     token: ENV['test_token'],
-  #     username: ENV['test_username']
-  #   }
-  # }
 end
