@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RUBY_MODULE" version="4">
-  <component name="ModuleRunConfigurationManager">
-    <shared />
-  </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../../.bundle/ruby/3.2.0/gems/audited-5.4.2" />
     <orderEntry type="jdk" jdkName="Remote: ruby-3.2.2 (-p53 (3)" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.10, Remote: ruby-3.2.2 (-p53 (3)) [gem]" level="application" />
-  </component>
-  <component name="RakeTasksCache">
-    <option name="myRootTask">
-      <RakeTaskImpl id="rake" />
-    </option>
-  </component>
-  <component name="RubyModuleProperties">
-    <option name="autoCreated" value="true" />
   </component>
 </module>
